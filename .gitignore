@@ -1,0 +1,27 @@
+# Foundry files
+cache/
+out/
+out-via-ir
+
+# Ignores development broadcast logs
+!/broadcast
+/broadcast/*
+/broadcast/*/31337/
+node_modules
+
+# General
+node_modules
+
+# Config files
+.env
+
+# Avoid ignoring gitkeep
+!/**/.gitkeep
+
+# Keep related abi
+out/*/*
+!out/Greeter.sol/*
+
+# Keep the latest deployment only
+broadcast/*/*/*
+!broadcast/*/*/run-latest.json

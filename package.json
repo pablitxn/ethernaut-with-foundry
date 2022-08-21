@@ -1,0 +1,27 @@
+{
+  "name": "solidity-foundry-boilerplate",
+  "private": true,
+  "scripts": {
+    "build": "forge build",
+    "build:optimized": "FOUNDRY_PROFILE=optimized forge build",
+    "coverage": "forge coverage --match-contract Unit",
+    "deploy:rinkeby": "bash -c 'source .env && forge script DeployRinkeby --rpc-url $RINKEBY_RPC --broadcast --private-key $RINKEBY_DEPLOYER_PK --verify --etherscan-api-key $ETHERSCAN_API_KEY'",
+    "lint:fix": "forge fmt",
+    "lint:check": "forge fmt --check",
+    "postinstall": "forge install",
+    "prepare": "husky install",
+    "test": "yarn test:unit && yarn test:e2e",
+    "test:e2e": "bash -c 'source .env && forge test --match-contract E2E --fork-url $MAINNET_RPC --fork-block-number $FORK_BLOCK -vvv'",
+    "test:unit": "forge test --match-contract Unit -vvv",
+    "test:unit:deep": "FOUNDRY_FUZZ_RUNS=5000 yarn test:unit",
+    "solhint": "solhint --max-warnings 0 \"src/contracts/**/*.sol\""
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.0.3",
+    "@commitlint/config-conventional": "17.0.3",
+    "husky": "8.0.1",
+    "lint-staged": "13.0.3",
+    "prettier": "2.7.1",
+    "solhint": "3.3.7"
+  }
+}
